@@ -19,3 +19,9 @@ class LoginPageLocators:
 
 class ProductPageLocators:
     ADD_TO_BASKET_BUTTON = (By.XPATH, '//form[@id="add_to_basket_form"]/button[contains(@class, "btn-add-to-basket")]')
+
+    ITEM_NAME = (By.XPATH, '//div[contains(@class, "product_main")]/h1')
+    ITEM_PRICE = (By.XPATH, '//div[contains(@class, "product_main")]/p[@class="price_color"]')
+
+    ADDED_TO_BASKET_MSG = (By.XPATH, '//div[@id="messages"]/div[1]//strong')
+    BASKET_PRICE_MSG = (By.XPATH, '//div[@id="messages"]/div[3]//strong')

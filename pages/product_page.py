@@ -11,6 +11,26 @@ class ProductPage(BasePage):
             'Impossible to find button which add item to basket'
         )
 
+    def get_item_name(self):
+        item_name = self.browser.find_element(*ProductPageLocators.ITEM_NAME)
+        return item_name.text
+
+    def get_item_price(self):
+        item_price = self.browser.find_element(*ProductPageLocators.ITEM_PRICE)
+        return item_price.text
+
+    def should_be_correct_added_item(self, item_name, item_price):
+        added_item_name = self.browser.find_element(*ProductPageLocators.ADDED_TO_BASKET_MSG)
+        added_item_name = added_item_name.text
+        added_item_price = self.browser.find_element(*ProductPageLocators.BASKET_PRICE_MSG)
+        added_item_price = added_item_price.text
+        assert item_name == added_item_name, (
+            f'Added item name {added_item_name} is not equal to expected {item_name}'
+        )
+        assert item_price == added_item_price, (
+            f'Busket price {added_item_price} is not equal to expected {item_price}'
+        )
+
     def add_item_to_basket(self):
         self.should_be_add_to_basket_button()
         button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
