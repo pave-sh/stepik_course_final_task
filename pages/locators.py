@@ -25,3 +25,5 @@ class ProductPageLocators:
 
     ADDED_TO_BASKET_MSG = (By.XPATH, '//div[@id="messages"]/div[1]//strong')
     BASKET_PRICE_MSG = (By.XPATH, '//div[@id="messages"]/div[3]//strong')
+
+    SUCCESS_ADD_TO_BASKET_MSG = (By.XPATH, '//div[@id="messages"]/div[contains(@class, "alert-success")]/div')
