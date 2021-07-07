@@ -1,5 +1,6 @@
 import pytest
 from .pages.main_page import MainPage
+from .pages.basket_page import BasketPage
 from .pages.login_page import LoginPage
 
 
@@ -21,6 +22,7 @@ class TestLoginFromMainPage:
         page = MainPage(browser, link)
         page.open()
         page.view_basket()
+        page = BasketPage(browser, '')
         page.should_be_empty_basket()
         page.should_be_empty_basket_message()
 

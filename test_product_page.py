@@ -2,6 +2,7 @@ import pytest
 from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
 from .pages.main_page import MainPage
+from .pages.basket_page import BasketPage
 
 
 def get_links_to_valid():
@@ -87,11 +88,11 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
     page.view_basket()
+    page = BasketPage(browser, '')
     page.should_be_empty_basket()
     page.should_be_empty_basket_message()
 
 
-@pytest.mark.user_add_item
 @pytest.mark.parametrize(
     'link', [pytest.param('https://selenium1py.pythonanywhere.com/en-gb/catalogue/stand-on-zanzibar_90/')]
 )

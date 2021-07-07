@@ -6,8 +6,6 @@ class BasePageLocators:
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
 
     VIEW_BASKET = (By.XPATH, '//div[contains(@class, "basket-mini")]/span/a')
-    BASKET_ITEMS = (By.XPATH, '//div[@id="content_inner"]//div[@class="basket-items"]')
-    EMPTY_BASKET_MSG = (By.XPATH, '//div[@id="content_inner"]/p')
 
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
@@ -29,6 +27,11 @@ class LoginPageLocators:
     REGISTER_PASSWORD = (By.XPATH, '//form[@id="register_form"]//input[@name="registration-password1"]')
     REGISTER_CONFIRM_PASSWORD = (By.XPATH, '//form[@id="register_form"]//input[@name="registration-password2"]')
     REGISTER_BUTTON = (By.XPATH, '//form[@id="register_form"]//button[@name="registration_submit"]')
+
+
+class BasketPageLocators:
+    BASKET_ITEMS = (By.XPATH, '//div[@id="content_inner"]//div[@class="basket-items"]')
+    EMPTY_BASKET_MSG = (By.XPATH, '//div[@id="content_inner"]/p')
 
 
 class ProductPageLocators:
