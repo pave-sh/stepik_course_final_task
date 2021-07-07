@@ -15,7 +15,6 @@ def get_links_to_valid():
 
 
 @pytest.mark.parametrize('link', get_links_to_valid())
-@pytest.mark.skip
 def test_guest_can_add_product_to_basket(browser, link):
     page = ProductPage(browser, link)
     page.open()
@@ -26,7 +25,6 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.should_be_correct_added_item(item_to_add_name, item_to_add_price)
 
 
-@pytest.mark.skip
 @pytest.mark.parametrize(
     'link', [
         pytest.param(
@@ -42,7 +40,6 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser, 
     page.should_not_be_success_adding_to_basket_message()
 
 
-@pytest.mark.skip
 @pytest.mark.parametrize('link', [pytest.param('http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207')])
 def test_guest_cant_see_success_message(browser, link):
     page = ProductPage(browser, link)
@@ -50,7 +47,6 @@ def test_guest_cant_see_success_message(browser, link):
     page.should_not_be_success_adding_to_basket_message()
 
 
-@pytest.mark.skip
 @pytest.mark.parametrize(
     'link', [
         pytest.param(
@@ -80,3 +76,12 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.go_to_login_page()
     page = LoginPage(browser, link)
     page.should_be_login_url()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.view_basket()
+    page.should_be_empty_basket()
+    page.should_be_empty_basket_message()
