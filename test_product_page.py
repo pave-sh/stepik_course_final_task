@@ -15,6 +15,7 @@ def get_links_to_valid():
     return links_to_validate
 
 
+@pytest.mark.need_review
 @pytest.mark.parametrize('link', get_links_to_valid())
 def test_guest_can_add_product_to_basket(browser, link):
     page = ProductPage(browser, link)
@@ -70,6 +71,7 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.should_be_login_link()
 
 
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
@@ -79,6 +81,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.should_be_login_url()
 
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
@@ -113,11 +116,11 @@ class TestUserAddToBasketFromProductPage:
         page.open()
         page.should_not_be_success_adding_to_basket_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser, link):
         page = ProductPage(browser, link)
         page.open()
         item_to_add_name = page.get_item_name()
         item_to_add_price = page.get_item_price()
         page.add_item_to_basket()
-        # page.solve_quiz_and_get_code()
         page.should_be_correct_added_item(item_to_add_name, item_to_add_price)
