@@ -1,4 +1,7 @@
 import pytest
+import random
+import string
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -19,3 +22,15 @@ def browser(request):
     browser.implicitly_wait(5)
     yield browser
     browser.quit()
+
+
+@pytest.fixture
+def gen_password():
+    chars = string.ascii_lowercase + string.ascii_uppercase
+    return ''.join(random.choice(chars) for _ in range(10))
+
+
+@pytest.fixture
+def gen_email():
+    chars = string.ascii_lowercase + string.ascii_uppercase
+    return ''.join(random.choice(chars) for _ in range(10)) + '@fakemail.org'
