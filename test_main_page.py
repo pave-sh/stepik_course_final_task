@@ -22,7 +22,7 @@ class TestLoginFromMainPage:
         page = MainPage(browser, link)
         page.open()
         page.view_basket()
-        page = BasketPage(browser, '')
+        page = BasketPage(browser, browser.current_url)
         page.should_be_empty_basket()
         page.should_be_empty_basket_message()
 

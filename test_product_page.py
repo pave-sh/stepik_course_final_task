@@ -88,7 +88,7 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     page = ProductPage(browser, link)
     page.open()
     page.view_basket()
-    page = BasketPage(browser, '')
+    page = BasketPage(browser, browser.current_url)
     page.should_be_empty_basket()
     page.should_be_empty_basket_message()
 
@@ -108,7 +108,7 @@ class TestUserAddToBasketFromProductPage:
         password = gen_password
         email = gen_email
         page.register_new_user(email, password)
-        page = MainPage(browser, '')
+        page = MainPage(browser, browser.current_url)
         page.should_be_register_success_message()
         page.should_be_authorized_user()
 
