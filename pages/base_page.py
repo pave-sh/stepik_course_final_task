@@ -49,6 +49,27 @@ class BasePage:
 
         return True
 
+    def is_text_present(self, how, what, timeout=15):
+        def get_text(driver):
+            result = False
+            try:
+                elem_text = driver.find_element(how, what).text
+                if len(elem_text) > 0:
+                    result = True
+            except NoSuchElementException:
+                pass
+            finally:
+                return result
+
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException).until(
+                get_text
+            )
+        except TimeoutException:
+            return False
+
+        return True
+
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
         link.click()

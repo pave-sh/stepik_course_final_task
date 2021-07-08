@@ -20,15 +20,16 @@ class ProductPage(BasePage):
         return item_price.text
 
     def should_be_correct_added_item(self, item_name, item_price):
+        self.is_text_present(*ProductPageLocators.ADDED_TO_BASKET_MSG, timeout=15)  # special case for firefox
         added_item_name = self.browser.find_element(*ProductPageLocators.ADDED_TO_BASKET_MSG)
         added_item_name = added_item_name.text
         added_item_price = self.browser.find_element(*ProductPageLocators.BASKET_PRICE_MSG)
         added_item_price = added_item_price.text
         assert item_name == added_item_name, (
-            f'Added item name {added_item_name} is not equal to expected {item_name}'
+            f'Added item name {added_item_name!r} is not equal to expected {item_name!r}'
         )
         assert item_price == added_item_price, (
-            f'Busket price {added_item_price} is not equal to expected {item_price}'
+            f'Busket price {added_item_price!r} is not equal to expected {item_price!r}'
         )
 
     def should_be_success_adding_to_basket_message(self):
