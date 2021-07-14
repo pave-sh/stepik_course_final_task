@@ -6,17 +6,16 @@ from .locators import BasePageLocators
 
 
 class BasePage:
-    def __init__(self, browser, url, timeout=10):
+    def __init__(self, browser, url):
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(timeout)
 
     def open(self):
         self.browser.get(self.url)
 
-    def is_element_present(self, how, what):
+    def is_element_present(self, how, what, timeout=5):
         try:
-            self.browser.find_element(how, what)
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
         except NoSuchElementException:
             return False
         return True

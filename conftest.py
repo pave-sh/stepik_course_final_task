@@ -31,7 +31,6 @@ def browser(request):
         browser = webdriver.Firefox(firefox_profile=firefox_profile)
     else:
         raise pytest.UsageError(f"Invalid --browser_name value, expect chrome or firefox, get {browser_name!r}")
-    browser.implicitly_wait(5)
     yield browser
     browser.quit()
 
