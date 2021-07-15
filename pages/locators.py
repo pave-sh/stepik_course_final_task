@@ -5,7 +5,7 @@ class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
 
-    VIEW_BASKET = (By.XPATH, '//div[contains(@class, "basket-mini")]/span/a')
+    VIEW_BASKET_LINK = (By.XPATH, '//div[contains(@class, "basket-mini")]/span/a')
 
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
@@ -19,13 +19,13 @@ class MainPageLocators:
 class LoginPageLocators:
     LOGIN_LINK_SUBSTRING = 'login'
     LOGIN_FORM = (By.XPATH, '//form[@id="login_form"]')
-    LOGIN_EMAIL = (By.XPATH, '//form[@id="login_form"]//input[@name="login-username"]')
-    LOGIN_PASSWORD = (By.XPATH, '//form[@id="login_form"]//input[@name="login-password"]')
+    LOGIN_EMAIL_INPUT = (By.XPATH, '//form[@id="login_form"]//input[@name="login-username"]')
+    LOGIN_PASSWORD_INPUT = (By.XPATH, '//form[@id="login_form"]//input[@name="login-password"]')
 
     REGISTER_FORM = (By.XPATH, '//form[@id="register_form"]')
-    REGISTER_EMAIL = (By.XPATH, '//form[@id="register_form"]//input[@name="registration-email"]')
-    REGISTER_PASSWORD = (By.XPATH, '//form[@id="register_form"]//input[@name="registration-password1"]')
-    REGISTER_CONFIRM_PASSWORD = (By.XPATH, '//form[@id="register_form"]//input[@name="registration-password2"]')
+    REGISTER_EMAIL_INPUT = (By.XPATH, '//form[@id="register_form"]//input[@name="registration-email"]')
+    REGISTER_PASSWORD_INPUT = (By.XPATH, '//form[@id="register_form"]//input[@name="registration-password1"]')
+    REGISTER_CONFIRM_PASSWORD_INPUT = (By.XPATH, '//form[@id="register_form"]//input[@name="registration-password2"]')
     REGISTER_BUTTON = (By.XPATH, '//form[@id="register_form"]//button[@name="registration_submit"]')
 
 
